@@ -61,6 +61,7 @@ class UserService {
     }
 
     user.isActivated = true
+    user.activationLink = ''
     await user.save()
   }
 
