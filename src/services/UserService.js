@@ -68,6 +68,23 @@ class UserService {
   async getUserByEmail(email) {
     return await UserModel.findOne({email})
   }
+
+  async checkAuth(token) {
+    const userData = await tokenService.validateToken(token)
+    if(!userData) {
+      return {
+        isLoginned: false,
+        user: {}
+      }
+    }
+
+    const user = await this.getUserByEmail(userData.email)
+    
+    return {
+      isLoginned: true,
+      user: new UserDto(user)
+    }
+  }
 }
 
 export default new UserService()

@@ -44,6 +44,16 @@ class UserController {
       next(e)
     }
   }
+
+  async checkAuth(req, res, next) {
+    try {
+      const {token} = req.body
+      const response = await userService.checkAuth(token)
+      return res.json(response)
+    } catch(e) {
+      next(e)
+    }
+  }
 }
 
 export default new UserController

@@ -19,6 +19,7 @@ router.post(
   userController.login
 )
 router.get("/activate/:link", userController.activate)
+router.post("/check-auth", userController.checkAuth)
 // router.get("/:userId", userController.get)
 
 export default router

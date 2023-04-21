@@ -1,4 +1,4 @@
-import tokenService from "../services/tokenService"
+import tokenService from "../services/tokenService.js"
 
 class TokenController {
   async generateToken(req, res, next) {
