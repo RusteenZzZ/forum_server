@@ -1,7 +1,7 @@
 import tokenService from "../services/tokenService"
 
 class TokenController {
-  async geterateToken(req, res, next) {
+  async generateToken(req, res, next) {
     try {
       const {email} = req.user
       const token = tokenService.generateToken({email})

@@ -8,7 +8,7 @@ const router = new Router()
 router.get(
   "/",
   authMiddleware,
-  tokenController.geterateToken
+  tokenController.generateToken
 )
 
 export default router
