@@ -1,7 +1,7 @@
 import MessageDto from "../dto/MessageDto.js"
 import ApiError from "../errors/ApiError.js"
 import MessageModel from "../models/MessageModel.js"
-import chatService from "./ChatService.js"
+import chatService from "./ForumService.js"
 import userService from "./userService.js"
 
 class MessageService {

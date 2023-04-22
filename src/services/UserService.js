@@ -69,6 +69,10 @@ class UserService {
     return await UserModel.findOne({email})
   }
 
+  async getUserById(id) {
+    return await UserModel.findById(id)
+  }
+
   async checkAuth(token) {
     const userData = await tokenService.validateToken(token)
     if(!userData) {
