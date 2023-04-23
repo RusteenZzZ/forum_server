@@ -34,13 +34,18 @@ class ForumService {
       throw ApiError.BadRequest("Non existing forum!")
     }
 
-    const messages = await messageService.getMessagedByForum(forumId)
+    const messages = await messageService.getMessagesByForum(forumId)
     const sortedMessages = [...messages].sort((a, b) => a.postedAt - b.postedAt)
-    const messageDtos = sortedMessages.map(message => new MessageDto(message))
+    const messageDtos = await Promise.all(sortedMessages.map(async (message) => {
+        const user = await userService.getUserById(message.author)
+        return {...(new MessageDto(message)), authorUsername: user.username}
+      }
+    ))
+    const user = await userService.getUserById(forum.creator)
 
     return {
       messages: messageDtos,
-      forumDetailes: new ForumDto(forum)
+      forumDetails: new ForumDto({...forum._doc, creatorUsername: user.username})
     }
   }
 

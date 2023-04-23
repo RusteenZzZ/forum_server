@@ -8,7 +8,7 @@ class MessageDto {
   constructor(model) {
     this.id = model._id
     this.author = model.author
-    this.texT = model.text
+    this.text = model.text
     this.chatId = model.chatId
     this.postedAt = model.postedAt
   }

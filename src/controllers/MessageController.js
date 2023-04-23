@@ -4,9 +4,9 @@ class MessageController {
   async postMessage(req, res, next) {
     try {
       const {email} = req.user
-      const {chatId, text} = req.body
+      const {forumId, text} = req.body
 
-      const response = await messageService.postMessage(chatId, email, text)
+      const response = await messageService.postMessage(forumId, email, text)
       return res.json(response)
     } catch(e) {
       next(e)
