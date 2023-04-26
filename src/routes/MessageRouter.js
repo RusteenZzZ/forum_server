@@ -10,5 +10,15 @@ router.post(
   authMiddleware,
   messageController.postMessage
 )
+router.get(
+  "/:messageId",
+  authMiddleware,
+  messageController.getMessage
+)
+router.get(
+  "/replies/:messageId",
+  authMiddleware,
+  messageController.getMessageReplies
+)
 
 export default router
